@@ -1,10 +1,15 @@
-export default function ProtectiveRights() {
-  const rights = [
-    "Budget Approval",
-    "New Financing",
-    "Board Approval",
-    "Acquisition Approval",
-  ];
+interface Company {
+  protective_rights: string[];
+}
+
+interface Props {
+  company: Company | null;
+}
+
+export default function ProtectiveRights({
+  company,
+}: Props) {
+  if (!company) return null;
 
   return (
     <div className="bg-[#0B1117] border border-slate-800 rounded-lg p-6">
@@ -13,20 +18,27 @@ export default function ProtectiveRights() {
       </h2>
 
       <div className="space-y-3">
-        {rights.map((right) => (
-          <div
-            key={right}
-            className="flex items-center gap-3"
-          >
-            <input
-              type="checkbox"
-              checked
-              readOnly
-            />
+        {company.protective_rights.map(
+          (right) => (
+            <div
+              key={right}
+              className="flex items-center gap-3"
+            >
+              <input
+                type="checkbox"
+                checked
+                readOnly
+              />
 
-            <span>{right}</span>
-          </div>
-        ))}
+              <span>
+                {right.replaceAll(
+                  "_",
+                  " "
+                )}
+              </span>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

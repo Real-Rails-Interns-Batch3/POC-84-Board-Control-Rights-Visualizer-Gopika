@@ -11,7 +11,18 @@ import ControlMeter from "@/components/dashboard/ControlMeter";
 import ScenarioCompare from "@/components/dashboard/ScenarioCompare";
 import ProtectiveRights from "@/components/dashboard/ProtectiveRights";
 
+import FilterBar from "@/components/dashboard/FilterBar";
+
 import api from "@/lib/api";
+
+interface Company {
+  company: string;
+  founder_seats: number;
+  investor_seats: number;
+  independent_seats: number;
+  protective_rights: string[];
+  control_score: number;
+}
 
 interface Metrics {
   companies: number;
@@ -26,21 +37,40 @@ export default function Home() {
     investor_controlled: 0,
   });
 
+  const [companies, setCompanies] = useState<Company[]>([]);
+  const [selectedCompany, setSelectedCompany] =
+    useState<Company | null>(null);
+
   useEffect(() => {
-    loadMetrics();
+    loadDashboardData();
   }, []);
 
-  async function loadMetrics() {
+  async function loadDashboardData() {
     try {
-      const response = await api.get("/metrics");
-      setMetrics(response.data);
+      const metricsResponse = await api.get("/metrics");
+
+      setMetrics(metricsResponse.data);
+
+      const companyResponse = await api.get("/companies");
+
+      setCompanies(companyResponse.data);
+
+      if (companyResponse.data.length > 0) {
+        setSelectedCompany(companyResponse.data[0]);
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Dashboard load failed:", error);
     }
   }
 
   return (
-    <DashboardLayout sidebar={<Sidebar />}>
+    <DashboardLayout
+      sidebar={
+        <Sidebar
+          selectedCompany={selectedCompany}
+        />
+      }
+    >
       <div>
         <h1 className="text-3xl font-bold mb-2">
           Board Control Rights Visualizer
@@ -56,14 +86,43 @@ export default function Home() {
           investorControlled={metrics.investor_controlled}
         />
 
+        {companies.length > 0 && (
+          <FilterBar
+            companies={companies.map(
+              (c) => c.company
+            )}
+            selected={
+              selectedCompany?.company || ""
+            }
+            onSelect={(companyName) => {
+              const company = companies.find(
+                (c) =>
+                  c.company === companyName
+              );
+
+              if (company) {
+                setSelectedCompany(company);
+              }
+            }}
+          />
+        )}
+
         <div className="space-y-6">
-          <BoardSeatMap />
+          <BoardSeatMap
+            company={selectedCompany}
+          />
 
-          <ControlMeter />
+          <ControlMeter
+            company={selectedCompany}
+          />
 
-          <ScenarioCompare />
+          <ScenarioCompare
+            company={selectedCompany}
+          />
 
-          <ProtectiveRights />
+          <ProtectiveRights
+            company={selectedCompany}
+          />
         </div>
       </div>
     </DashboardLayout>

@@ -1,6 +1,22 @@
-export default function ControlMeter() {
-  const founderControl = 45;
-  const investorControl = 55;
+interface Company {
+  company: string;
+  control_score: number;
+}
+
+interface Props {
+  company: Company | null;
+}
+
+export default function ControlMeter({
+  company,
+}: Props) {
+  if (!company) return null;
+
+  const investorControl =
+    company.control_score;
+
+  const founderControl =
+    100 - investorControl;
 
   return (
     <div className="bg-[#0B1117] border border-slate-800 rounded-lg p-6">
@@ -8,7 +24,7 @@ export default function ControlMeter() {
         Founder vs Investor Control
       </h2>
 
-      <div className="space-y-4">
+      <div className="space-y-5">
         <div>
           <div className="flex justify-between mb-2">
             <span>Founder</span>

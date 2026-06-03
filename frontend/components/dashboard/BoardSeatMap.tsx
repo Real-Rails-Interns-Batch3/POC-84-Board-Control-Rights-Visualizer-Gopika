@@ -8,20 +8,16 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "Founder Seats",
-    value: 2,
-  },
-  {
-    name: "Investor Seats",
-    value: 3,
-  },
-  {
-    name: "Independent Seats",
-    value: 1,
-  },
-];
+interface Company {
+  company: string;
+  founder_seats: number;
+  investor_seats: number;
+  independent_seats: number;
+}
+
+interface Props {
+  company: Company | null;
+}
 
 const COLORS = [
   "#22C55E",
@@ -29,12 +25,35 @@ const COLORS = [
   "#38BDF8",
 ];
 
-export default function BoardSeatMap() {
+export default function BoardSeatMap({
+  company,
+}: Props) {
+  if (!company) return null;
+
+  const data = [
+    {
+      name: "Founder Seats",
+      value: company.founder_seats,
+    },
+    {
+      name: "Investor Seats",
+      value: company.investor_seats,
+    },
+    {
+      name: "Independent Seats",
+      value: company.independent_seats,
+    },
+  ];
+
   return (
     <div className="bg-[#0B1117] border border-slate-800 rounded-lg p-6">
-      <h2 className="text-xl font-semibold mb-6">
+      <h2 className="text-xl font-semibold mb-4">
         Board Seat Map
       </h2>
+
+      <p className="text-slate-400 mb-4">
+        {company.company}
+      </p>
 
       <div className="h-[320px]">
         <ResponsiveContainer width="100%" height="100%">
@@ -45,7 +64,7 @@ export default function BoardSeatMap() {
               outerRadius={110}
               label
             >
-              {data.map((entry, index) => (
+              {data.map((_, index) => (
                 <Cell
                   key={index}
                   fill={COLORS[index]}
