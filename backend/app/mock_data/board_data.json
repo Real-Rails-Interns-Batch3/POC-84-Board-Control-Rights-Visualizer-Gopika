@@ -1,0 +1,25 @@
+[
+  {
+    "company": "Alpha Ventures",
+    "founder_seats": 2,
+    "investor_seats": 3,
+    "independent_seats": 1,
+    "protective_rights": [
+      "budget_approval",
+      "new_financing",
+      "board_approval"
+    ],
+    "control_score": 60
+  },
+  {
+    "company": "Nova Labs",
+    "founder_seats": 3,
+    "investor_seats": 2,
+    "independent_seats": 1,
+    "protective_rights": [
+      "budget_approval",
+      "acquisition_approval"
+    ],
+    "control_score": 45
+  }
+]
