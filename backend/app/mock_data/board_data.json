@@ -4,63 +4,71 @@
     "founder_seats": 2,
     "investor_seats": 3,
     "independent_seats": 1,
-    "protective_rights": ["budget_approval", "new_financing", "board_approval"],
-    "control_score": 60
+    "stage": "Series A",
+    "protective_rights": ["budget_approval", "new_financing", "board_approval"]
+   
   },
   {
     "company": "Nova Labs",
     "founder_seats": 3,
     "investor_seats": 2,
     "independent_seats": 1,
-    "protective_rights": ["budget_approval", "acquisition_approval"],
-    "control_score": 45
+    "stage": "Seed",
+    "protective_rights": ["budget_approval", "acquisition_approval"]
+    
   },
   {
     "company": "FinEdge Capital",
     "founder_seats": 1,
     "investor_seats": 4,
     "independent_seats": 1,
-    "protective_rights": ["board_approval", "new_financing"],
-    "control_score": 80
+    "stage": "Series B",
+    "protective_rights": ["board_approval", "new_financing"]
+   
   },
   {
     "company": "ScaleForge",
     "founder_seats": 3,
     "investor_seats": 3,
     "independent_seats": 1,
-    "protective_rights": ["budget_approval", "board_approval"],
-    "control_score": 50
+    "stage": "Series A",
+    "protective_rights": ["budget_approval", "board_approval"]
+    
   },
   {
     "company": "Vertex Health",
     "founder_seats": 4,
     "investor_seats": 2,
     "independent_seats": 1,
-    "protective_rights": ["budget_approval"],
-    "control_score": 35
+    "stage": "IPO",
+    "protective_rights": ["budget_approval"]
+    
   },
   {
     "company": "CloudMint",
     "founder_seats": 2,
     "investor_seats": 2,
     "independent_seats": 2,
-    "protective_rights": ["new_financing"],
-    "control_score": 50
+    "stage": "Seed",
+    "protective_rights": ["new_financing"]
+    
   },
   {
     "company": "QuantumPay",
     "founder_seats": 3,
     "investor_seats": 1,
     "independent_seats": 2,
-    "protective_rights": ["budget_approval", "board_approval"],
-    "control_score": 30
+    "stage": "Series B",
+    "protective_rights": ["budget_approval", "board_approval"]
+    
   },
   {
     "company": "Apex Mobility",
     "founder_seats": 2,
     "investor_seats": 4,
     "independent_seats": 1,
-    "protective_rights": ["new_financing", "acquisition_approval"],
-    "control_score": 75
+    "stage": "IPO",
+    "protective_rights": ["new_financing", "acquisition_approval"]
+    
   }
 ]

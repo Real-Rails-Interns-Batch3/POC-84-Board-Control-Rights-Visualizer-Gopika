@@ -3,11 +3,11 @@ import json
 
 router = APIRouter(prefix="/api")
 
-with open(
-    "app/mock_data/board_data.json",
-    "r"
-) as f:
-    data = json.load(f)
+from app.services.edgar_adapter import (
+    load_company_data
+)
+
+data = load_company_data()
 
 @router.get("/companies")
 def get_companies():
