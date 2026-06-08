@@ -6,6 +6,7 @@ import BoardMajority from "./BoardMajority";
 import GovernanceHealthScore from "./GovernanceHealthScore";
 import GovernanceTimeline from "./GovernanceTimeline";
 
+
 import {
   Card,
   CardContent,
@@ -153,6 +154,8 @@ export default function Sidebar({
       <GovernanceHealthScore
         company={selectedCompany}
       />
+
+     
 
       <Card className="bg-slate-950 border-slate-800 text-white">
         <CardHeader>
