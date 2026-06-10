@@ -248,12 +248,14 @@ Synthetic data is clearly labeled and used solely for demonstration and educatio
 
 * FastAPI
 * Python
+* requests
 
 ---
 
 ## Data Layer
 
 * Governance Adapter Service
+* SEC EDGAR Integration Stub
 * Governance Metrics Service
 * Synthetic Dataset Fallback Layer
 
